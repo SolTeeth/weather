@@ -12,3 +12,27 @@ body {
   top: 30px;
 }
 p {margin-top: 100px}
+
+.form-control {
+    transition: 0.4s;
+}
+
+.form-control:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+    box-shadow: 7px 3px 10px #444444;
+}
+.form-control:focus {
+    transform: scale(1.01);
+    cursor: pointer;
+    box-shadow: 7px 3px 10px #444444;
+}
+
+button {
+    height: 50px;
+}
+button:hover {
+    height: 50px;
+    transform: scale(1.01);
+    cursor: pointer;
+}
