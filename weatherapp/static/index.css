@@ -30,7 +30,12 @@ p {margin-top: 100px;
 
 .form-control {
     transition: 0.4s;
-    border-radius:50px
+    border-radius:50px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .form-control:hover {
@@ -48,10 +53,11 @@ p {margin-top: 100px;
     height: 50px;
     border-radius: 50px;
     position: relative;
-    top:10px
+    top:10px;
 }
 button:hover {
     height: 50px;
     transform: scale(1.01);
     cursor: pointer;
+    box-shadow: 2px 1px 5px #444444;
 }
