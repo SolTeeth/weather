@@ -12,14 +12,17 @@
     <link rel="icon" type="image/png" href="{% static "logo.png" %}"/>
 </head>
 <body>
-{#{% if user.is_authenticated %}#}
-{##}
-{#{% else %}#}
-{#<div>#}
-{#<a href="{% url 'signup' %}" class="btn btn-primary">Sign up</a>#}
-{#<a href="{% url 'login' %}" class="btn btn-primary">Login</a>#}
-{#</div>#}
-{#{% endif %}#}
+{% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" class="authenticate-buttons">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+{% else %}
+<div class="authenticate-buttons">
+<a href="{% url 'signup' %}" class="btn btn-primary">Sign up</a>
+<a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+</div>
+{% endif %}
 
 {% block content %} {% endblock %}
 

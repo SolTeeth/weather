@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import WeatherForm,SignupForm
+from .models import Cities, UserInfo
+from .forms import WeatherForm, SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout, forms
 
@@ -19,9 +20,15 @@ def home(request):
         lat, lon = response['lat'], response['lon']
         response = requests.get(
             f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&lang=ru&units=metric&appid=037025aea7c9ddf313bf42e7b3136b41').json()
+        new_city = Cities.add(city=city)
+        new_city.save()
         return render(request, 'index.html', {'response': response, 'form': form})
     except IndexError:
         return render(request, 'index.html', {'form': form, 'error': 'City you entered does not exist'})
+
+
+def account(request):
+    return None
 
 
 def signup(request):
@@ -37,12 +44,18 @@ def signup(request):
         return redirect('home')
 
 
-def login(request):
+def loginuser(request):
     if request.method == 'GET':
         return render(request, 'login.html', {'form': forms.AuthenticationForm()})
     user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-    if user:
+    if user is not None:
         login(request, user)
-        redirect('home')
+        return redirect('home')
+    else:
+        return render(request, 'login.html', {'form': forms.AuthenticationForm(request.POST)})
 
 
+def logoutuser(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home')

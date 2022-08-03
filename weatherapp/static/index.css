@@ -23,6 +23,11 @@ body {
     margin-top: 100px;
 }
 
+.authenticate-buttons {
+    padding:5px;
+    display: flex;
+    justify-content: flex-end
+}
 
 
 .form-control {
@@ -56,7 +61,7 @@ body {
     top:10px;
     font-size: 20px;
 }
-button:hover {
+.btn-success:hover {
     height: 50px;
     transform: scale(1.01);
     cursor: pointer;
