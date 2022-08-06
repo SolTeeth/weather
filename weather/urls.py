@@ -24,5 +24,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.loginuser, name='login'),
     path('logout/', views.logoutuser, name='logout'),
+    # Account settings
     path('account/', views.account, name='account'),
+    path('account/delete_city/<str:city>', views.delete_city, name='delete_city'),
 ]

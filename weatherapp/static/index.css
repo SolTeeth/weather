@@ -30,7 +30,7 @@ body {
 }
 
 
-.form-control {
+#main-form {
     transition: 0.4s;
     border-radius:50px;
     text-align: center;
@@ -43,15 +43,23 @@ body {
 }
 
 
-.form-control:hover {
+#main-form:hover {
     transform: scale(1.01);
     cursor: pointer;
     box-shadow: 7px 3px 10px #444444;
 }
-.form-control:focus {
+#main-form:focus {
     transform: scale(1.01);
     cursor: pointer;
     box-shadow: 7px 3px 10px #444444;
+}
+
+
+#add-city-form {
+    width: 400px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
 
 .btn-success {

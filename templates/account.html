@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>My cities</h1>
+<form id="add-city-form" action="" method="post">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+      <input type="text"  name="city_field" class="form-control" placeholder="Your city" aria-label="Your city" aria-describedby="button-addon2">
+      <button class="btn btn-primary" type="submit" id="button-addon2">Add city</button>
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      My cities
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {% for city in cities %}
+            <h6 style="float:left" class="dropdown-header">{{ city }}</h6>
+            <a href="{% url "delete_city" city %}" style="float:left"><img src="{% static "delete1.png" %}" width="13px"></a>
+            <br>
+          {% endfor %}
+      </div>
+    </div>
+</form>
+
+{% if error %}
+    <h3>{{ error }}</h3>
+{% endif %}
+{% endblock %}
