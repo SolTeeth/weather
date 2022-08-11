@@ -4,15 +4,15 @@
 {% block content %}
 
 <div class="main-form">
-<img src="{% static 'logo.png' %}" height="200px" alt="">
+    <img src="{% static 'logo.png' %}" height="200px" alt="">
 
-<form method="post" class="col-lg-6 offset-lg-3 ">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="d-grid gap-2 col-5 mx-auto">
-        <button type="submit" class="btn btn-success">Weather IT!</button>
-    </div>
-</form>
+    <form method="post" class="col-lg-6 offset-lg-3 ">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid gap-2 col-5 mx-auto">
+            <button type="submit" class="btn btn-success">Weather IT!</button>
+        </div>
+    </form>
 </div>
 
 {% if error %}

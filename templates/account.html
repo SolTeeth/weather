@@ -12,11 +12,15 @@
       My cities
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {% if cities %}
           {% for city in cities %}
-            <h6 style="float:left" class="dropdown-header">{{ city }}</h6>
+            <h6 class="dropdown-header" style="float:left">{{ city }}</h6>
             <a href="{% url "delete_city" city %}" style="float:left"><img src="{% static "delete1.png" %}" width="13px"></a>
             <br>
           {% endfor %}
+      {% else %}
+          <h6 class="dropdown-header">No cities yet</h6>
+      {% endif %}
       </div>
     </div>
 </form>
@@ -24,4 +28,5 @@
 {% if error %}
     <h3>{{ error }}</h3>
 {% endif %}
+
 {% endblock %}

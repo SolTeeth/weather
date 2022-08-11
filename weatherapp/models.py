@@ -23,4 +23,4 @@ class UserInfo(models.Model):
 
     class Meta:
         verbose_name = 'User info'
-        verbose_name_plural = 'Users'' info'
+        verbose_name_plural = 'Users info'

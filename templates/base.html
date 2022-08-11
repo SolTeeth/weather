@@ -13,12 +13,18 @@
 </head>
 <body>
 {% if user.is_authenticated %}
+    <div>
+
     <form method="post" action="{% url 'logout' %}" class="authenticate-buttons">
         {% csrf_token %}
+        <a href="{% url 'home' %}" class="btn btn-primary" id="home-button">Home</a>
+        <a href="{% url 'account' %}" class="btn btn-primary">My cities</a>
         <button type="submit" class="btn btn-primary">Logout</button>
     </form>
+    </div>
 {% else %}
 <div class="authenticate-buttons">
+<a href="{% url 'home' %}" class="btn btn-primary" id="home-button">Home</a>
 <a href="{% url 'signup' %}" class="btn btn-primary">Sign up</a>
 <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
 </div>

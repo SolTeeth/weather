@@ -4,6 +4,7 @@ from .forms import WeatherForm, SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout, forms
 from django.db import IntegrityError
+from django.core.exceptions import ObjectDoesNotExist
 
 import requests
 
@@ -30,11 +31,14 @@ def home(request):
 
 def account(request):
     if request.method == 'GET':
-        userinfo = UserInfo.objects.get(user=request.user)
-        user_cities = list(userinfo.cities.values('city'))
-        user_cities = [item['city'] for item in user_cities]
-        form = WeatherForm()
-        return render(request, 'account.html', {'cities': user_cities, 'form': form})
+        try:
+            userinfo = UserInfo.objects.get(user=request.user)
+            user_cities = list(userinfo.cities.values('city'))
+            user_cities = [item['city'] for item in user_cities]
+            form = WeatherForm()
+            return render(request, 'account.html', {'cities': user_cities, 'form': form})
+        except ObjectDoesNotExist:
+            return render(request, 'account.html')
 
     try:
         city = request.POST.get('city_field')
